@@ -1,0 +1,58 @@
+#水仙花数
+for i in range(1,10):
+    for j in range(0,10):
+        for k in range(0,10):
+            if i**3+j**3+k**3 == 100*i+10*j+k:
+                print(100*i+10*j+k)
+                
+#完全数
+import numpy as np
+n = eval(input("输入上限"))
+
+for i in range(1,n+1):
+    a = list()
+    for j in range(1,i):
+        if i % j == 0:
+            a.append(j)
+    if np.sum(a) == i:
+        print (i)
+        
+#百鸡百钱
+w = list()
+for a in range(0,21):
+    for b in range(0,34):
+        for c in range(0,100):
+            if a+b+c == 100 and 5*a+3*b+(1/3)*c == 100:
+                sums = list([a,b,c])
+                w.append(sums)
+print(w)
+
+#生成斐波那契数列
+Fib = list()
+
+n = eval(input("数列上限"))
+a,b =1,1
+while a < n:
+    Fib.append(a)
+    a,b = b,a+b
+
+#赌博游戏
+saves = list()
+count = 0
+while True:
+    a = np.random.randint(1,6)
+    b = np.random.randint(1,6)
+    count += 1
+    if a+b == 7 or a+b == 11:
+        print("玩家胜出","点数",a+b,"a=",a,"b=",b,count)
+        break
+    elif a+b==2 or a+b==3 or a+b == 12:
+        print("庄家胜出","点数",a+b,"a=",a,"b=",b,count)
+        break
+    else:
+        saves.append(a+b)
+        if count == 1:
+            continue
+        elif saves[0] == a+b:
+            print("玩家胜出","点数",a+b,"a=",a,"b=",b,count)
+            break
